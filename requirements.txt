@@ -1,0 +1,7 @@
+customtkinter
+pyuac
+colorama
+packaging
+tqdm
+pywin32
+dearpygui
