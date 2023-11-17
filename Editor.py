@@ -1,4 +1,5 @@
 import dearpygui.dearpygui as dpg
+import time
 
 class Editor():
     def __init__ (self) -> None:
@@ -6,11 +7,12 @@ class Editor():
 
     def on_console_input(self, sender):
         input_text = dpg.get_value(sender)
-        # Process the input_text here
-        self.console_buffer += f">> {input_text}\n"
-        # Update the output field with the new content
-        dpg.set_value("Output", self.console_buffer)
-        dpg.set_value(sender, "")  # Clear the input text
+        if (input_text):
+            # Process the input_text here
+            self.console_buffer += f">> {input_text.strip()}\n"
+            # Update the output field with the new content
+            dpg.set_value("Output", self.console_buffer)
+            dpg.set_value(sender, "")  # Clear the input text
 
     def run(self):
         dpg.create_context()
@@ -29,18 +31,19 @@ class Editor():
             # Console Output
             dpg.add_input_text(
                 label="",
-                default_value="Welcome to the Console!",
+                default_value="UNIENGINE CONSOLE!",
                 multiline=True,
                 readonly=True,
                 height=200,
+                width=dpg.get_viewport_max_width(),
                 tag="Output", # Assign an ID to the output field
             )
-
             # Console Input
-            dpg.add_input_text(
+            dpg.add_input_text( 
                 label="",
                 default_value="",
                 height=50,
+                width=dpg.get_viewport_max_width(),
                 on_enter=True,
                 callback=self.on_console_input,
             )
