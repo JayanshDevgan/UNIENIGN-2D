@@ -3,24 +3,27 @@ from Windows import Windows
 
 class Editor:
     def __init__ (self) -> None:
-        self.console_buffer = ""
+        self.windows = Windows()
 
     def run(self) -> None:
         dpg.create_context()
-        dpg.create_viewport(title="UNIENGINE-2D")
+        dpg.create_viewport(title="UNIENGINE", small_icon="./images/UNI_Light.ico")
         dpg.setup_dearpygui()
 
         dpg.configure_app(docking=True, docking_space=True)
 
         with dpg.viewport_menu_bar():
+            with dpg.menu(label="File"):
+                pass
             with dpg.menu(label="Windows"):
-                dpg.add_menu_item(label="Engine Console", callback=Windows.create_engine_console)
-                dpg.add_menu_item(label="Entity Window", callback=Windows.create_entity_window)
+                dpg.add_menu_item(label="Engine Console", callback=self.windows.create_engine_console)
+                dpg.add_menu_item(label="Entity Window", callback=self.windows.create_entity_window)
 
         Windows.create_entity_window()
+        Windows.create_worldspace_window()
 
         with dpg.handler_registry():
-            dpg.add_key_release_handler(callback=self.on_console_input)
+            dpg.add_key_release_handler(callback=self.windows.on_console_input)
 
         dpg.show_viewport()
         dpg.start_dearpygui()

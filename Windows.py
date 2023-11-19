@@ -35,10 +35,10 @@ class Windows:
                         on_enter=True,
                     )
 
-    # Entity Window
+    def create_worldspace_window():
+          with dpg.window(label="World Space", height=dpg.get_viewport_max_height() / 2.5, width=dpg.get_viewport_max_width() / 1.5, pos=[300, 300]):
+                pass
+          
     def create_entity_window() -> None:
-        with dpg.window(label="Entities") as EntitiesWindow:
-            pass 
-        dpg.set_item_height(EntitiesWindow, dpg.get_viewport_max_height())
-        dpg.set_item_width(EntitiesWindow, 200)
-        dpg.set_item_pos(EntitiesWindow, [0, 0])
+        with dpg.window(label="Entities", height=dpg.get_viewport_max_height(), width=200, pos=[0, 0]):
+            pass

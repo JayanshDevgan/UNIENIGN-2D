@@ -32,7 +32,6 @@ def CreateUNIBATFile(ProjectLocation: str, ProjectName: str) -> None:
 
         try:
             file_extension = ".UNI.bat"
-            file_type_name = "UNI BATCH FILE"
             python_script = f"{ProjectLocation}/{ProjectName}/core/editor/editor.py"
             icon_path = f"{ProjectLocation}/{ProjectName}/core/public/UNIBATFILEicon.ico"
 

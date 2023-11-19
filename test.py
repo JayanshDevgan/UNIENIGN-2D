@@ -1,42 +1,26 @@
 import dearpygui.dearpygui as dpg
 
+def create_docked_windows():
+    with dpg.dockspace():
+        # Create a dock space
+        with dpg.dock(title="DockSpace"):
+            # Dock your windows into the central dock space
+            with dpg.dock(id=1, slot=0):
+                with dpg.window(label="Window 1"):
+                    pass
 
-class Editor():
-    def __init__ (self) -> None:
-        pass
+            with dpg.dock(id=2, slot=1):
+                with dpg.window(label="Window 2"):
+                    pass
 
-    def run(self):
-        def save_callback():
+            with dpg.dock(id=3, slot=2):
+                with dpg.window(label="Window 3"):
+                    pass
 
-            print("Save Clicked")
+with dpg.create_viewport(title="UNIENGINE"):
+    create_docked_windows()
 
+dpg.show_viewport()
+dpg.start_dearpygui()
+dpg.destroy_context()
 
-
-        dpg.create_context()
-
-        dpg.create_viewport()
-
-        dpg.setup_dearpygui()
-
-
-
-        with dpg.window(label="Example Window"):
-
-            dpg.add_text("Hello world")
-
-            dpg.add_button(label="Save", callback=save_callback)
-
-            dpg.add_input_text(label="string")
-
-            dpg.add_slider_float(label="float")
-
-
-
-        dpg.show_viewport()
-
-        dpg.start_dearpygui()
-
-        dpg.destroy_context()
-
-editor = Editor()
-editor.run()
