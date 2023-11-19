@@ -79,7 +79,7 @@ def CreateProject(ProjectName: str, ProjectLocation: str) -> None:
             UNI.Error(f"Project Name - {ProjectName} -> Invalid Name \n\t\t Only A-Z, a-z, and _ are allowed \n\t\t\t\tor\n\t\t\t Project Name is too shot")
 
 
-class HUB_APP():
+class HUB_APP:
     def __init__(self) -> None:
         pass
 

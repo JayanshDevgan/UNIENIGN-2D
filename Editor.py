@@ -1,11 +1,11 @@
 import dearpygui.dearpygui as dpg
 from Windows import Windows
 
-class Editor():
+class Editor:
     def __init__ (self) -> None:
         self.console_buffer = ""
 
-    def run(self):
+    def run(self) -> None:
         dpg.create_context()
         dpg.create_viewport(title="UNIENGINE-2D")
         dpg.setup_dearpygui()

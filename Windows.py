@@ -5,7 +5,7 @@ class Windows:
         self.console_buffer = ""
 
     # Console Window
-    def on_console_input(self, sender):
+    def on_console_input(self, sender) -> None:
             input_text = dpg.get_value(sender)
             if (input_text):
                 # Process the input_text here
@@ -13,7 +13,7 @@ class Windows:
                 # Update the output field with the new content
                 dpg.set_value("Output", self.console_buffer)
                 dpg.set_value(sender, "")  # Clear the input text
-    def create_engine_console(self):
+    def create_engine_console(self) -> None:
                 with dpg.window(label="Console"):
                     # Console Output
                     dpg.add_input_text(
@@ -36,7 +36,7 @@ class Windows:
                     )
 
     # Entity Window
-    def create_entity_window():
+    def create_entity_window() -> None:
         with dpg.window(label="Entities") as EntitiesWindow:
             pass 
         dpg.set_item_height(EntitiesWindow, dpg.get_viewport_max_height())
