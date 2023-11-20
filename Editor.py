@@ -4,6 +4,7 @@ from Windows import Windows
 class Editor:
     def __init__ (self) -> None:
         self.windows = Windows()
+        
 
     def run(self) -> None:
         dpg.create_context()
@@ -18,9 +19,13 @@ class Editor:
             with dpg.menu(label="Windows"):
                 dpg.add_menu_item(label="Engine Console", callback=self.windows.create_engine_console)
                 dpg.add_menu_item(label="Entity Window", callback=self.windows.create_entity_window)
+            with dpg.menu(label="Layout"):
+                dpg.add_menu_item(label="Default Layout", callback=self.windows.set_default_layout)
+                dpg.add_separator()
+                dpg.add_menu_item(label="Save Layout", callback=self.windows.save_layout)
 
-        Windows.create_entity_window()
-        Windows.create_worldspace_window()
+        self.windows.create_entity_window()
+        self.windows.create_worldspace_window()
 
         with dpg.handler_registry():
             dpg.add_key_release_handler(callback=self.windows.on_console_input)
